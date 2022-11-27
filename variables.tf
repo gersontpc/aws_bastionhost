@@ -8,6 +8,11 @@ variable "instance_name" {
   default = "bastionhost"
 }
 
+variable "subnet_ids" {
+  type        = list(string)
+  description = "Set subnet ids"
+}
+
 variable "vpc_id" {
   type        = string
   description = "Insert VPC ID"
@@ -26,4 +31,12 @@ variable "tags" {
     "Environment" = "Development",
     "Time"        = "Ops"
   }
+}
+
+# CloudWatch
+
+variable "retention_in_days" {
+  type        = number
+  description = "Set days for expires logs"
+  default     = 7
 }

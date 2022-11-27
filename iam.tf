@@ -38,6 +38,10 @@ resource "aws_iam_policy" "bastion" {
           "ecr:*",
           "s3:*",
           "ssm:*",
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "logs:DescribeLogStreams"
         ]
         Effect   = "Allow"
         Resource = "*"

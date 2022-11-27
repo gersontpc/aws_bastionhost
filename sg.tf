@@ -1,5 +1,5 @@
 resource "aws_security_group" "bastion" {
-  name        = format("%s-sg", var.instance_name)
+  name        = "ab"
   description = "Allow SSH inbound traffic"
   vpc_id      = var.vpc_id
 

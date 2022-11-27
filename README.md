@@ -1,13 +1,19 @@
-Bastion Host example usage.
+## BastionHost lo
+
+
 
 Examples in path: /example/terraform.tfvars
+
+awslogs agent configured for send commands logs (root/users) to CloudWatch Logs, see configuration in file templates/user-data.sh.tpl
+
+![CloudWatch Logs](./img/cloudwatch_logs.png)
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.2.9 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.3.3 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.6.0 |
 
 ## Providers
@@ -15,6 +21,7 @@ Examples in path: /example/terraform.tfvars
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 4.6.0 |
+| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
 
@@ -24,6 +31,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [aws_cloudwatch_log_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_iam_instance_profile.bastion](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_policy.bastion](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.bastion](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -32,6 +40,7 @@ No modules.
 | [aws_security_group.bastion](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_ami.amazon2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
 | [aws_key_pair.personal](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/key_pair) | data source |
+| [template_file.user_data](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 
@@ -39,7 +48,9 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_instance_name"></a> [instance\_name](#input\_instance\_name) | n/a | `string` | `"bastionhost"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | n/a | `string` | `"t2.nano"` | no |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Set subnet ids | `list(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Insert default tags | `map(string)` | <pre>{<br>  "Environment": "Development",<br>  "Time": "Ops"<br>}</pre> | no |
+| <a name="input_volume_size"></a> [volume\_size](#input\_volume\_size) | Change volume block size | `number` | `100` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | Insert VPC ID | `string` | n/a | yes |
 
 ## Outputs
