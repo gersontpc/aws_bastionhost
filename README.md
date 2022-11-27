@@ -1,6 +1,4 @@
-## BastionHost lo
-
-
+## BastionHost log commands in CloudWatch Logs
 
 Examples in path: /example/terraform.tfvars
 
