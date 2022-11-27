@@ -2,7 +2,7 @@
 
 Examples in path: /example/terraform.tfvars
 
-awslogs agent configured for send commands logs (root/users) to CloudWatch Logs, see configuration in file templates/user-data.sh.tpl
+awslogs agent configured for send commands logs (root/users) to CloudWatch Logs, see configuration in file `templates/user-data.sh.tpl`.
 
 ![CloudWatch Logs](./img/cloudwatch_logs.png)
 
