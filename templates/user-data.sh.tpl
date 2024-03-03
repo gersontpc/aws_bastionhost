@@ -12,6 +12,9 @@ yum upgrade -y
 yum install -y awslogs
 systemctl enable awslogsd.service
 
+INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+ls -t /var/lib/amazon/ssm/i-0cd393ba1b9e607df/channels
+
 # Configure rsyslog
 cat >> /etc/profile << EOF
 
